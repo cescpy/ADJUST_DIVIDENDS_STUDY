@@ -3,11 +3,11 @@ Study of various adjustments for dividends in historical price // Estudio de dif
 
 '''
 OBJETIVOS:
-    - Estudiar el impacto de los dividendos en las series de datos hitóricos de cotización.
-    - Estudiar diferentes métodos de ajuste de dividendos (los tradicionales y nuevas propuestas) y cálculo de rentabilidades históricas.
-    - Discernir sobre la mejor eleccion en el tratamiento de los datos según el tipo de backtests/análisis/comparativas/... a realizar en cada momento.
-    - Sentar las bases para elaborar una sistemática de trabajo adequada y viable para realizar BD's de datos históricos.
-    - Valorar la afectación de los impuestos en la rentabilidad real con reinversión de dividendos (o sin reinversión).
+- Estudiar el impacto de los dividendos en las series de datos hitóricos de cotización.
+- Estudiar diferentes métodos de ajuste de dividendos (los tradicionales y nuevas propuestas) y cálculo de rentabilidades históricas.
+- Discernir sobre la mejor eleccion en el tratamiento de los datos según el tipo de backtests/análisis/comparativas/... a realizar en cada momento.
+- Sentar las bases para elaborar una sistemática de trabajo adequada y viable para realizar BD's de datos históricos.
+- Valorar la afectación de los impuestos en la rentabilidad real con reinversión de dividendos (o sin reinversión).
 '''
 '''
 ESTUDIO DE DIFERENTES METODOS PARA EL AJUSTE DE DIVIDENDOS PARA LOS CALCULOS DE RENTABILIDAD:
@@ -38,8 +38,8 @@ https://www.dividendchannel.com/drip-returns-calculator/
 
 CASO 6: AJUSTE DE COTIZACION >> DATOS SIN AJUSTAR + DIVIDENDOS REINVERTIDOS EN EL MISMO ACTIVO - CARGA FISCAL
 Limitaciones del cálculo: 
-    - Se supone que se cobra el dividendo en la fecha ex-dividend, lo cual normalmente no es cierto.
-    - Se supone que se pagan los impuestos en el momento de cobrar el dividendom, lo cual no es cierto.
+- Se supone que se cobra el dividendo en la fecha ex-dividend, lo cual normalmente no es cierto.
+- Se supone que se pagan los impuestos en el momento de cobrar el dividendom, lo cual no es cierto.
 '''
 
 '''
@@ -66,23 +66,24 @@ Entonces idealmente:
 
 
 SOLUCIÓN PARA HACER UNA BASE DE DATOS DE COTIZACIONES HISTÓRICAS:
-    - Recopilar y guardar los datos no ajustados + dividendos + ¿splits? (los splits parece que acostumbran a venir ajustados siempre por defecto)
-    - Como estos no deben cambiar con el tiempo se pueden actualizar datos nuevos sobre los que ya se tienen.
-    - Tener una función para convertir los datos no ajustados a ajustados con los datos guardados de dividendos ¿y splits?
+- Recopilar y guardar los datos no ajustados + dividendos + ¿splits? (los splits parece que acostumbran a venir ajustados siempre por defecto)
+- Como estos no deben cambiar con el tiempo se pueden actualizar datos nuevos sobre los que ya se tienen.
+- Tener una función para convertir los datos no ajustados a ajustados con los datos guardados de dividendos ¿y splits?
  
 
 A ESTUDIAR: hacer un ajustador de dividendos de estilo TOTAL RETURN para comparaciones de rentabilidades a plazo.
 
 HECHOS OBSERVADOS A ESTUDIAR:
-    - En los ÍNDICES (SPX se ha observado) no se realizan ajustes por dividendo? 
-        --> Tiene sentido utilizar un índice como Benchmark si no se puede invertir directamente en esa cotización?
-        --> Estamos comparando contra una cotización que no incluye ni tiene en cuenta la rentabilidad por dividendo?
-    (Por ejemplo si comparo el SPY incluyendo rentabilidad del dividendo contra el SPX me sale superior en la del SPY...)
+- En los ÍNDICES (SPX se ha observado) no se realizan ajustes por dividendo? 
+
+--> Tiene sentido utilizar un índice como Benchmark si no se puede invertir directamente en esa cotización?
+--> Estamos comparando contra una cotización que no incluye ni tiene en cuenta la rentabilidad por dividendo?
+(Por ejemplo si comparo el SPY incluyendo rentabilidad del dividendo contra el SPX me sale superior en la del SPY...)
 
 SIMPLIFICACIÓN DE CASOS SIMILARES: 
-    - Los casos 2,3 y 5 són prácticamente iguales.
-    - Curiosamente el caso 5 sale idéntico al caso 2, pero no debería ser así (¿nos enganya YF sobre el método de cálculo que utiliza?).
-    - En cambio el caso 3 debería ser idéntico al caso 2 pero no es exacto del todo.
+- Los casos 2,3 y 5 són prácticamente iguales.
+- Curiosamente el caso 5 sale idéntico al caso 2, pero no debería ser así (¿nos enganya YF sobre el método de cálculo que utiliza?).
+- En cambio el caso 3 debería ser idéntico al caso 2 pero no es exacto del todo.
 
 REFLEXIÓN EXTRA: Para realizar AT (Analisis Técnico) ajuste o no ajuste?
 >> El AT puede cambiar bastante de una serie ajustada o una sin ajustar. 
