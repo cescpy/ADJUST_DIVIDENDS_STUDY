@@ -156,7 +156,7 @@ case6['%Profit'] = ((case6['Close_recalc']-case6['Close_recalc'][0]) / case6['Cl
 
 
 # GRAFICO DE COTIZACIONES AJUSTADAS Y SUS COMBINACIONES
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(12,6))
 # Graficar cada columna 'Close' en un gráfico de líneas
 if ticker_benchmark != False: 
     ax.plot(benchmark['Close_recalc'], label=f'BENCHMARK ({ticker_benchmark})')
@@ -176,16 +176,16 @@ plt.show()
 
 
 # GRAFICO DE COTIZACIONES AJUSTADAS COMO 'TOTAL RETURN' Y SUS COMBINACIONES
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(12,6))
 # Graficar cada columna 'Close_TR' en un gráfico de líneas
 if ticker_benchmark != False: 
     ax.plot(benchmark['Close_TR'], label=f'BENCHMARK ({ticker_benchmark})')
 
 ax.plot(case1['Close_TR'], label='NO AJUSTADO YF (PRECIO REAL)')
 ax.plot(case2['Close_TR'], label='TR AJUSTADO YF')
-ax.plot(case3['Close_TR'], label='AJUSTE PROPIO POR FACTOR')
+# ax.plot(case3['Close_TR'], label='AJUSTE PROPIO POR FACTOR')
 ax.plot(case4['Close_TR'], label='TR SIN REINVERSION DE DIVIDENDOS')
-ax.plot(case5['Close_TR'], label='TR CON REINVERSION DE DIVIDENDOS')
+# ax.plot(case5['Close_TR'], label='TR CON REINVERSION DE DIVIDENDOS')
 ax.plot(case6['Close_TR'], label='TR CON REINVERSION - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
@@ -195,18 +195,38 @@ ax.grid(True)
 plt.show()
 
 
+# GRAFICO DE RETORNOS ACUMULADOS POR CASOS EN BASE 100 (se puede cambiar la base)
+base = 10
+fig, ax = plt.subplots(figsize=(12,6))
+# Graficar cada columna 'Return' en un gráfico de líneas
+if ticker_benchmark != False: 
+    ax.plot((benchmark['Return_recalc'])*base , label=f'BENCHMARK ({ticker_benchmark})')
+
+ax.plot((case1['Return_recalc'])*base, label='NO AJUSTADO YF')
+ax.plot((case2['Return_recalc'])*base, label='AJUSTADO YF')
+# ax.plot((case3['Return_recalc'])*100, label='AJUSTE PROPIO POR FACTOR')
+ax.plot((case4['Return_recalc'])*base, label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
+# ax.plot((case5['Return_recalc'])*100, label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
+ax.plot((case6['Return_recalc'])*base, label='AJUSTADO CON REINVERSION - CARGA FISCAL')
+ax.legend()
+ax.set_xlabel('Fecha')
+ax.set_ylabel('Retornos acumulados')
+plt.title(f'{ticker} - GRAFICO DE RETORNOS ACUMULADOS POR CASOS - BASE {str(base)}')
+ax.grid(True)
+plt.show()
+
 
 # GRAFICO DE NAV POR CASOS 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(12,6))
 # Graficar cada columna 'NAV' en un gráfico de líneas
 if ticker_benchmark != False: 
     ax.plot(benchmark['NAV'] , label=f'BENCHMARK ({ticker_benchmark})')
 
 ax.plot(case1['NAV'], label='NO AJUSTADO YF')
 ax.plot(case2['NAV'], label='AJUSTADO YF')
-ax.plot(case3['NAV'], label='AJUSTE PROPIO POR FACTOR')
+# ax.plot(case3['NAV'], label='AJUSTE PROPIO POR FACTOR')
 ax.plot(case4['NAV'], label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
-ax.plot(case5['NAV'], label='AJUSTADO CON REINVERSIÓN DE DIVIDENDOS')
+# ax.plot(case5['NAV'], label='AJUSTADO CON REINVERSIÓN DE DIVIDENDOS')
 ax.plot(case6['NAV'], label='AJUSTADO CON REINVERSIÓN - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
@@ -217,7 +237,7 @@ plt.show()
 
 
 # GRAFICO DE % RENTABILIDAD
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(12,6))
 # Graficar cada columna 'Return' en un gráfico de líneas
 if ticker_benchmark != False: 
     ax.plot(benchmark['%Profit'] , label=f'BENCHMARK ({ticker_benchmark})')
@@ -225,9 +245,9 @@ if ticker_benchmark != False:
 ax.plot(case1['%Profit'], label='NO AJUSTADO')
 ax.plot(case2['%Profit'], label='AJUSTADO')
 # ax.plot(case3['%Profit'], label='AJUSTE PROPIO POR FACTOR')
-# ax.plot(case4['%Profit'], label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
+ax.plot(case4['%Profit'], label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
 # ax.plot(case5['%Profit'], label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
-# ax.plot(case6['%Profit'], label='AJUSTADO CON REINVERSION - CARGA FISCAL')
+ax.plot(case6['%Profit'], label='AJUSTADO CON REINVERSION - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
 ax.set_ylabel('Rentabilidad %')
@@ -236,26 +256,9 @@ ax.grid(True)
 plt.show()
 
 
-'''
-# GRAFICO DE RETORNOS ACUMULADOS POR CASOS EN BASE 100
-fig, ax = plt.subplots()
-# Graficar cada columna 'Return' en un gráfico de líneas
-if ticker_benchmark != False: 
-    ax.plot((benchmark['Return_recalc'])*100 , label=f'BENCHMARK ({ticker_benchmark})')
 
-ax.plot((case1['Return_recalc'])*100, label='NO AJUSTADO YF')
-ax.plot((case2['Return_recalc'])*100, label='AJUSTADO YF')
-ax.plot((case3['Return_recalc'])*100, label='AJUSTE PROPIO POR FACTOR')
-ax.plot((case4['Return_recalc'])*100, label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
-ax.plot((case5['Return_recalc'])*100, label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
-ax.plot((case6['Return_recalc'])*100, label='AJUSTADO CON REINVERSION - CARGA FISCAL')
-ax.legend()
-ax.set_xlabel('Fecha')
-ax.set_ylabel('Retornos acumulados')
-plt.title(f'{ticker} - GRAFICO DE RETORNOS ACUMULADOS POR CASOS - BASE 100')
-ax.grid(True)
-plt.show()
-'''
+
+
 
 
 ''' Comparacion series de yf según opciones de 'download()'
