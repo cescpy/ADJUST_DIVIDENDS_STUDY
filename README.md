@@ -1,8 +1,10 @@
-# adjust_dividends_study
-Study of various adjustments for dividends in historical price // Estudio de diferentes ajustes por dividendos en las cotizaciones históricas
+# ADJUST_DIVIDENDS_STUDY
+Study of various adjustments for dividends in historical price 
+
+Estudio de diferentes ajustes por dividendos en las cotizaciones históricas
 
 
-OBJETIVOS:
+## OBJETIVOS:
 - Estudiar el impacto de los dividendos en las series de datos hitóricos de cotización.
 - Estudiar diferentes métodos de ajuste de dividendos (los tradicionales y nuevas propuestas) y cálculo de rentabilidades históricas.
 - Discernir sobre la mejor eleccion en el tratamiento de los datos según el tipo de backtests/análisis/comparativas/... a realizar en cada momento.
@@ -10,39 +12,43 @@ OBJETIVOS:
 - Valorar la afectación de los impuestos en la rentabilidad real con reinversión de dividendos (o sin reinversión).
 
 
-ESTUDIO DE DIFERENTES METODOS PARA EL AJUSTE DE DIVIDENDOS PARA LOS CALCULOS DE RENTABILIDAD:
 
-CASO 1: DATOS SIN AJUSTAR A DIVIDENDOS OBTENIDOS DE Yahoo Finance
+## ESTUDIO DE DIFERENTES METODOS PARA EL AJUSTE DE DIVIDENDOS PARA LOS CALCULOS DE RENTABILIDAD:
 
-CASO 2: DATOS AJUSTADOS A DIVIDENDOS OBTENIDOS DE Yahoo Finance (en teoría ajustados por factor de ajuste)
+#### CASO 1: DATOS SIN AJUSTAR A DIVIDENDOS OBTENIDOS DE Yahoo Finance
 
-CASO 3: AJUSTE CALCULADO POR METODO ESTANDAR DE DIVIDENDO PROPORCIONAL CON FACTOR DE AJUSTE
-- Fuentes:
+#### CASO 2: DATOS AJUSTADOS A DIVIDENDOS OBTENIDOS DE Yahoo Finance (en teoría ajustados por factor de ajuste)
+
+#### CASO 3: AJUSTE CALCULADO POR METODO ESTANDAR DE DIVIDENDO PROPORCIONAL CON FACTOR DE AJUSTE
+- Fuentes / Info adicional:
 >> https://joshschertz.com/2016/08/27/Vectorizing-Adjusted-Close-with-Python/
+>> 
 >> https://albertlobo.com/markets/adjusted-ohlc-values
+>> 
 >> https://tradewithpython.com/cleaning-stock-dividend-data-using-pandas-and-calculating-dividend-factor
 
-CASO 4: AJUSTE DE COTIZACION >> DATOS SIN AJUSTAR + DIVIDENDOS GUARDADOS SIN RENTABILIDAD
+#### CASO 4: AJUSTE DE COTIZACION >> DATOS SIN AJUSTAR + DIVIDENDOS GUARDADOS SIN RENTABILIDAD
 Limitaciones del cálculo:
 - Se supone que se cobra el dividendo en la fecha ex-dividend, lo cual normalmente no es cierto.
 - No tiene en cuenta la carga fiscal de los dividendos.
 
-CASO 5: AJUSTE DE COTIZACION >> DATOS SIN AJUSTAR + DIVIDENDOS REINVERTIDOS EN EL MISMO ACTIVO
+#### CASO 5: AJUSTE DE COTIZACION >> DATOS SIN AJUSTAR + DIVIDENDOS REINVERTIDOS EN EL MISMO ACTIVO
 Limitaciones del cálculo: 
 - Se supone que se cobra el dividendo en la fecha ex-dividend, lo cual normalmente no es cierto.
 - No tiene en cuenta la carga fiscal de los dividendos.
 - Podría ser equivalente a un ETF de acumulación.
-- Fuentes:
+- Recursos:
 >> https://dqydj.com/stock-return-calculator/
+>> 
 >> https://www.dividendchannel.com/drip-returns-calculator/
 
-CASO 6: AJUSTE DE COTIZACION >> DATOS SIN AJUSTAR + DIVIDENDOS REINVERTIDOS EN EL MISMO ACTIVO - CARGA FISCAL
+#### CASO 6: AJUSTE DE COTIZACION >> DATOS SIN AJUSTAR + DIVIDENDOS REINVERTIDOS EN EL MISMO ACTIVO - CARGA FISCAL
 Limitaciones del cálculo: 
 - Se supone que se cobra el dividendo en la fecha ex-dividend, lo cual normalmente no es cierto.
 - Se supone que se pagan los impuestos en el momento de cobrar el dividendom, lo cual no es cierto.
 
 
-CONCLUSIONES: 
+## CONCLUSIONES: 
 - El ajuste de dividendos cambia toda la serie de datos históricos anteriores!!
 - Los precios que tengo no són los que realmente fueron...
 - Pueden cambiar significativamente las señales pasadas de indicadores, soportes, resistencias, etc... haciendo backtests
@@ -64,18 +70,18 @@ Entonces idealmente:
 - Uso de Benchmark >> El Benchmark tiene que ser con datos ajustados!! O estremos subestimando la rentabilidad del Benchmark
 
 
-SOLUCIÓN PARA HACER UNA BASE DE DATOS DE COTIZACIONES HISTÓRICAS:
+## SOLUCIÓN PARA HACER UNA BASE DE DATOS DE COTIZACIONES HISTÓRICAS:
 - Recopilar y guardar los datos no ajustados + dividendos + ¿splits? (los splits parece que acostumbran a venir ajustados siempre por defecto)
 - Como estos no deben cambiar con el tiempo se pueden actualizar datos nuevos sobre los que ya se tienen.
 - Tener una función para convertir los datos no ajustados a ajustados con los datos guardados de dividendos ¿y splits?
  
 
+
 A ESTUDIAR: hacer un ajustador de dividendos de estilo TOTAL RETURN para comparaciones de rentabilidades a plazo.
 
 
-HECHOS OBSERVADOS A ESTUDIAR:
-- En los ÍNDICES (SPX se ha observado) no se realizan ajustes por dividendo? 
 
+HECHOS OBSERVADOS A ESTUDIAR: En los ÍNDICES (SPX se ha observado) no se realizan ajustes por dividendo? 
 --> Tiene sentido utilizar un índice como Benchmark si no se puede invertir directamente en esa cotización?
 --> Estamos comparando contra una cotización que no incluye ni tiene en cuenta la rentabilidad por dividendo?
 (Por ejemplo si comparo el SPY incluyendo rentabilidad del dividendo contra el SPX me sale superior en la del SPY...)
@@ -92,7 +98,7 @@ REFLEXIÓN EXTRA: Para realizar AT (Analisis Técnico) ajuste o no ajuste?
 >> Pero que importa más, la fiabilidad del AT en si o que sea el AT que todo el mundo mira (profecías autocumplidas)??
 
 
-CONTENIDO DE CADA COLUMNA DE LOS DF's:
+## CONTENIDO DE CADA COLUMNA DE LOS DF's:
 - caseX['Close']      ==> Precios originales sin ajuste (excepto 'case2' -> descarga ajustada de YF que incorporan ajuste estandar de dividendos)
 - caseX['Dividends']  ==> Dividendos recividos 
 - caseX['Pct']        ==> Variación percentual diaria del caseX['Close'] 
