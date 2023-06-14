@@ -154,7 +154,11 @@ case6['%Profit'] = ((case6['Close_recalc']-case6['Close_recalc'][0]) / case6['Cl
 
 
 
-
+'''
+GRAFICO
+Se descartan en algunos graficos los casos 3 y 5 dado que se superponen con el caso 2.
+Se pueden descomentar las lineas pertinentes sii se quieren comprobar los resultados de las series
+'''
 # GRAFICO DE COTIZACIONES AJUSTADAS Y SUS COMBINACIONES
 fig, ax = plt.subplots(figsize=(12,6))
 # Graficar cada columna 'Close' en un gráfico de líneas
