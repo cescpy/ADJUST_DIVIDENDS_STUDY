@@ -21,7 +21,7 @@ end = '2023-05-31'
 ticker = 'KO'
 
 capital = float(10000)
-divitax = float(0.19)
+divitax = float(0.20)
 if capital == 0 or divitax == 0:
     raise Exception("Error: El capital o divitax no pueden ser cero")
 
