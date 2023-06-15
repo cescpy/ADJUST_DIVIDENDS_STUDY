@@ -168,10 +168,10 @@ if ticker_benchmark != False:
 
 ax.plot(case1['Close_recalc'], label='NO AJUSTADO')
 ax.plot(case2['Close_recalc'], label='AJUSTADO')
-# ax.plot(case3['Close_recalc'], label='AJUSTE PROPIO POR FACTOR')
-# ax.plot(case4['Close_recalc'], label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
-# ax.plot(case5['Close_recalc'], label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
-# ax.plot(case6['Close_recalc'], label='AJUSTADO CON REINVERSION - CARGA FISCAL')
+ax.plot(case3['Close_recalc'], label='AJUSTE PROPIO POR FACTOR')
+ax.plot(case4['Close_recalc'], label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
+ax.plot(case5['Close_recalc'], label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
+ax.plot(case6['Close_recalc'], label='AJUSTADO CON REINVERSION - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
 ax.set_ylabel('Precio de cierre')
@@ -188,9 +188,9 @@ if ticker_benchmark != False:
 
 ax.plot(case1['Close_TR'], label='NO AJUSTADO YF (PRECIO REAL)')
 ax.plot(case2['Close_TR'], label='TR AJUSTADO YF')
-# ax.plot(case3['Close_TR'], label='AJUSTE PROPIO POR FACTOR')
+ax.plot(case3['Close_TR'], label='AJUSTE PROPIO POR FACTOR')
 ax.plot(case4['Close_TR'], label='TR SIN REINVERSION DE DIVIDENDOS')
-# ax.plot(case5['Close_TR'], label='TR CON REINVERSION DE DIVIDENDOS')
+ax.plot(case5['Close_TR'], label='TR CON REINVERSION DE DIVIDENDOS')
 ax.plot(case6['Close_TR'], label='TR CON REINVERSION - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
@@ -263,12 +263,9 @@ plt.show()
 
 
 
-
-
-
 ''' Comparacion series de yf según opciones de 'download()'
 # Series sin ajustes y se incluye la columna 'Adj close'
-# yf = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=False, back_adjust=False)
+# yf = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=False, back_adjust=True)
 # Ajusta todas las columnas (Open, High, Low y Close)  
 # yf_auto = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=True, back_adjust=False)
 yf['Close'] == yf_back['Close']
@@ -276,8 +273,10 @@ yf['Adj Close'] == yf_auto['Close']    >>> No pasa la prueba de equal por difere
 # son_iguales = np.array_equal(yf['Adj Close'][1:], yf_auto['Close'][1:])
 
 No se exactamente que hace el back_adjust. Lo descarto de momento
-# quotes_yfback = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=False, back_adjust=True)
-# quotes_yfautoback = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=True, back_adjust=True)
+quotes_yfback = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=False, back_adjust=True)
+quotes_yfautoback = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=True, back_adjust=True)
+quotes_yfauto = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=True, back_adjust=False)
+quotes_yfapelo = yf.download(ticker , start, interval = '1d', actions = True, auto_adjust=False, back_adjust=False)
 '''
 
 
