@@ -17,11 +17,11 @@ import numpy as np
 import matplotlib.pyplot as plt
  
 start = '2020-01-01'
-end = '2023-05-31'
-ticker = 'KO'
+end = '2023-05-26'
+ticker = 'AAPL'
 
-capital = float(10000)
-divitax = float(0.19)
+capital = float(20000)
+divitax = float(0.21)
 if capital == 0 or divitax == 0:
     raise Exception("Error: El capital o divitax no pueden ser cero")
 
