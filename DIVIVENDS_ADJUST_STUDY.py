@@ -16,9 +16,9 @@ import yfinance as yf
 import numpy as np
 import matplotlib.pyplot as plt
  
-start = '2020-01-01'
-end = '2023-05-31'
-ticker = 'KO'
+start = '2000-01-01'
+end = '2023-07-31'
+ticker = 'DIA'
 
 capital = float(10000)
 divitax = float(0.19)
@@ -28,7 +28,7 @@ if capital == 0 or divitax == 0:
 
 
 ticker_benchmark = False #'^SPX'   # False o 'ticker'
-benchmark_adjust = True
+benchmark_adjust = False
 # CALCULOS ACTIVO DE REFERENCIA
 if (ticker_benchmark != False): 
     benchmark = yf.download(ticker_benchmark , start, end, interval = '1d', actions = True, auto_adjust= benchmark_adjust )   # AJUSTADO O NO AJUSTADO??
