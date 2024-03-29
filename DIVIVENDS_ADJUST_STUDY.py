@@ -17,8 +17,8 @@ import numpy as np
 import matplotlib.pyplot as plt
  
 start = '2000-01-01'
-end = '2023-07-31'
-ticker = 'DIA'
+end = '2023-10-31'
+ticker = 'TLT'
 
 capital = float(10000)
 divitax = float(0.19)
@@ -168,10 +168,10 @@ if ticker_benchmark != False:
 
 ax.plot(case1['Close_recalc'], label='NO AJUSTADO')
 ax.plot(case2['Close_recalc'], label='AJUSTADO')
-ax.plot(case3['Close_recalc'], label='AJUSTE PROPIO POR FACTOR')
+# ax.plot(case3['Close_recalc'], label='AJUSTE PROPIO POR FACTOR')
 ax.plot(case4['Close_recalc'], label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
-ax.plot(case5['Close_recalc'], label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
-ax.plot(case6['Close_recalc'], label='AJUSTADO CON REINVERSION - CARGA FISCAL')
+# ax.plot(case5['Close_recalc'], label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
+# ax.plot(case6['Close_recalc'], label='AJUSTADO CON REINVERSION - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
 ax.set_ylabel('Precio de cierre')
@@ -188,10 +188,10 @@ if ticker_benchmark != False:
 
 ax.plot(case1['Close_TR'], label='NO AJUSTADO YF (PRECIO REAL)')
 ax.plot(case2['Close_TR'], label='TR AJUSTADO YF')
-ax.plot(case3['Close_TR'], label='AJUSTE PROPIO POR FACTOR')
+# ax.plot(case3['Close_TR'], label='AJUSTE PROPIO POR FACTOR')
 ax.plot(case4['Close_TR'], label='TR SIN REINVERSION DE DIVIDENDOS')
-ax.plot(case5['Close_TR'], label='TR CON REINVERSION DE DIVIDENDOS')
-ax.plot(case6['Close_TR'], label='TR CON REINVERSION - CARGA FISCAL')
+# ax.plot(case5['Close_TR'], label='TR CON REINVERSION DE DIVIDENDOS')
+# ax.plot(case6['Close_TR'], label='TR CON REINVERSION - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
 ax.set_ylabel('Precio de cierre')
@@ -212,7 +212,7 @@ ax.plot((case2['Return_recalc'])*base, label='AJUSTADO YF')
 # ax.plot((case3['Return_recalc'])*100, label='AJUSTE PROPIO POR FACTOR')
 ax.plot((case4['Return_recalc'])*base, label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
 # ax.plot((case5['Return_recalc'])*100, label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
-ax.plot((case6['Return_recalc'])*base, label='AJUSTADO CON REINVERSION - CARGA FISCAL')
+# ax.plot((case6['Return_recalc'])*base, label='AJUSTADO CON REINVERSION - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
 ax.set_ylabel('Retornos acumulados')
@@ -232,7 +232,7 @@ ax.plot(case2['NAV'], label='AJUSTADO YF')
 # ax.plot(case3['NAV'], label='AJUSTE PROPIO POR FACTOR')
 ax.plot(case4['NAV'], label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
 # ax.plot(case5['NAV'], label='AJUSTADO CON REINVERSIÓN DE DIVIDENDOS')
-ax.plot(case6['NAV'], label='AJUSTADO CON REINVERSIÓN - CARGA FISCAL')
+# ax.plot(case6['NAV'], label='AJUSTADO CON REINVERSIÓN - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
 ax.set_ylabel('Capital')
@@ -252,7 +252,7 @@ ax.plot(case2['%Profit'], label='AJUSTADO')
 # ax.plot(case3['%Profit'], label='AJUSTE PROPIO POR FACTOR')
 ax.plot(case4['%Profit'], label='AJUSTADO SIN REINVERSION DE DIVIDENDOS')
 # ax.plot(case5['%Profit'], label='AJUSTADO CON REINVERSION DE DIVIDENDOS')
-ax.plot(case6['%Profit'], label='AJUSTADO CON REINVERSION - CARGA FISCAL')
+# ax.plot(case6['%Profit'], label='AJUSTADO CON REINVERSION - CARGA FISCAL')
 ax.legend()
 ax.set_xlabel('Fecha')
 ax.set_ylabel('Rentabilidad %')
